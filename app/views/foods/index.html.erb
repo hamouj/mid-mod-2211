@@ -1,6 +1,6 @@
 <body>
   <header>
-    <h3><%= @facade.query %> Results</h3>
+    <h3><%= @facade.query.capitalize %> Results</h3>
   </header>
 
   <section id="food_results">
@@ -9,7 +9,7 @@
     </div>
 
     <div>
-      <h5>First 10 Results:</h5>
+      <p><b>First 10 Results</b></p>
       <table>
         <tr>
           <th>GTIN/UPC Code</th>
@@ -19,7 +19,7 @@
         </tr>
 
       <% @facade.food_search.each do |food| %>
-        <tr id="food-<%= food.code %>">
+        <tr class="food">
           <td><%= food.code %></td>
           <td><%= food.description %></td>
           <td><%= food.brand_owner %></td>
