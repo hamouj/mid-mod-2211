@@ -13,7 +13,7 @@ describe 'Food Index Page' do
 
         visit root_path
         fill_in :q, with: 'sweet potatoes'
-        click_button "Search"
+        click_button 'Search'
       end
 
       it 'I see a total number of items returned by the search' do
@@ -44,6 +44,29 @@ describe 'Food Index Page' do
             expect(page).to have_content(@food10.description)
             expect(page).to have_content(@food10.brand_owner)
             expect(page).to have_content(@food10.ingredients)
+          end
+        end
+      end
+    end
+
+    context 'sad path testing' do
+      it 'When there are no matches, I get a no matches found message' do
+        visit root_path
+        fill_in :q, with: 'xyz'
+        click_button 'Search'
+
+        expect(page).to have_content('No matches found')
+      end
+
+      it 'When no search paramters are entered, I get a list of the first 10 results from the FDC' do
+        visit root_path
+        click_button 'Search'
+
+        total_results = FoodFacade.new(q: "").total_results
+
+        within 'section#food_results' do
+          within 'div#total_results' do
+            expect(page).to have_content("Total Results: #{total_results}")
           end
         end
       end
