@@ -1,11 +1,11 @@
 <body>
   <header>
-    <h3><%= @facade.query.capitalize %> Results</h3>
+    <h3>"<%= @facade.query %>" Results</h3>
   </header>
 
   <section id="food_results">
     <div id="total_results">
-      <p><b>Total Results: </b><%= @facade.total_results %></p>
+      <p><b>Total Results: </b><%= number_with_delimiter(@facade.total_results, :delimiter => ',') %></p>
     </div>
 
     <div>
