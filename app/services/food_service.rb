@@ -1,5 +1,5 @@
 class FoodService
-  def search_foods(keyword)
+  def food_search(keyword)
     get_url("/fdc/v1/foods/search?query=#{keyword}")
   end
 

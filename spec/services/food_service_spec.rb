@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe FoodService do
   context 'instance methods' do
-    context '#search_foods()' do
+    context '#food_search()' do
       it 'returns food data based on a search query' do
-        food_data = FoodService.new.search_foods('sweet potatoes')
+        food_data = FoodService.new.food_search('sweet potatoes')
 
         expect(food_data).to be_a Hash
 
