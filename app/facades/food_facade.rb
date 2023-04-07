@@ -1,4 +1,6 @@
 class FoodFacade
+  attr_reader :query
+
   def initialize(params)
     @query = params[:q]
   end

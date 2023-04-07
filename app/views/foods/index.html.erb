@@ -1,0 +1,32 @@
+<body>
+  <header>
+    <h3><%= @facade.query %> Results</h3>
+  </header>
+
+  <section id="food_results">
+    <div id="total_results">
+      <p><b>Total Results: </b><%= @facade.total_results %></p>
+    </div>
+
+    <div>
+      <h5>First 10 Results:</h5>
+      <table>
+        <tr>
+          <th>GTIN/UPC Code</th>
+          <th>Description</th>
+          <th>Brand Owner</th>
+          <th>Ingredients</th>
+        </tr>
+
+      <% @facade.food_search.each do |food| %>
+        <tr id="food-<%= food.code %>">
+          <td><%= food.code %></td>
+          <td><%= food.description %></td>
+          <td><%= food.brand_owner %></td>
+          <td><%= food.ingredients %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </section>
+</body>
